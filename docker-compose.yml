@@ -1,16 +1,29 @@
 version: "3.8"
 services:
+# rabbit mq
   rabbitmq:
     image: rabbitmq:3-management
     container_name: rabbitmq
-#    hostname: 'rabbitmq'
     ports:
       - "5672:5672"
       - "15672:15672"
-#    volumes:
-#      - ~/.docker-conf/rabbitmq/data/:/var/lib/rabbitmq/mnesia/
-#      - ./rabbitmq/rabbitmq.conf:/etc/rabbitmq/rabbitmq.conf
     restart: always
     environment:
       RABBITMQ_DEFAULT_USER: rbtmq
       RABBITMQ_DEFAULT_PASS: rbtmqpw
+# postgres db
+  db:
+    image: postgres
+    ports:
+      - 6999:5432
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgrespw
+      POSTGRES_DB: postgres
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
