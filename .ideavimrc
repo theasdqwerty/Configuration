@@ -1,4 +1,3 @@
-
 """ The Leader Key
 let mapleader = " "
 
@@ -9,6 +8,12 @@ set clipboard+=ideaput
 set history=1000
 set showcmd
 set which-key
+let g:WhichKey_FontSize = 18
+let g:WhichKey_CommandColor = "#41ead4"
+let g:WhichKey_PrefixColor = "#f335b2"
+let g:WhichKey_SortOrder = "by_key_prefix_first"
+let g:WhichKeyDesc_leader = "<leader> Leader key"
+let g:WhichKey_DefaultDelay = 200
 "set notimeout
 "set timeoutlen=5000
 
@@ -19,18 +24,26 @@ set number relativenumber
 set incsearch
 set ignorecase
 set hlsearch
+"nnoremap <silent> <esc> :noh<cr>
+"nmap <esc> :noh<cr>
 
 set smartcase
 set nrformats-=octal
 
+"map b :NERDTreeMapActivateNode<CR>
 set NERDTree
-set sneak
+nnoremap <silent> <C-n> :NERDTreeToggle<CR>
+"nnoremap <silent> <-n> <Action>(ActivateProjectToolWindow)<CR>
+"let g:NERDTreeMapActivateNode = <Action>(Left)<CR>
+"let g:NTPNames = add(g:NTPNames, 'csproj')
+"extend(g:NTPNames, ['*.sln', '*.csproj'])
+"set sneak
 set keep-english-in-normal
-set ideajoin
+"set ideajoin
 set ideamarks
 
-nnoremap \e :e ~/.ideavimrc<CR>
-nnoremap \r :action IdeaVim.ReloadVimRc.reload<CR>
+"nnoremap \e :e ~/.ideavimrc<CR>
+"nnoremap \r :action IdeaVim.ReloadVimRc.reload<CR>
 
 """ Distraction Free Mode
 nnoremap <c-z> :action ToggleDistractionFreeMode<CR>
@@ -57,14 +70,25 @@ nnoremap tl <c-w>l
 nnoremap tj <c-w>j
 nnoremap tk <c-w>k
 
+"map <leader>1 <Action>(ActivateProjectToolWindow)<CR>
+"nmap <leader>0 :action ActivateCommitToolWindow<cr>
+"nmap <leader>1 :action SelectInProjectView<cr>
+"nmap <leader>2 :action ActivateBookmarksToolWindow<cr>
+"nmap <leader>3 :action ActivateFindToolWindow<cr>
+"nmap <leader>4 :action ActivateRunToolWindow<cr>
+"nmap <leader>5 :action ActivateDebugToolWindow<cr>
+"nmap <leader>7 :action ActivateAndroidProfilerToolWindow<cr>
+"nmap <leader>8 :action ActivateTerminalToolWindow<cr>
+"nmap <leader>9 :action ActivateVersionControlToolWindow<cr>
+
 """ Editing source code
 set ideajoin
 set idearefactormode=keep
 
-imap <C-j> <Down>
-imap <C-k> <Up>
-imap <C-h> <Left>
-imap <C-l> <Right>
+imap <C-j> :action EditorDown<CR>
+imap <C-k> :action EditorUp<CR>
+imap <C-h> :action EditorLeft<CR>
+imap <C-l> :action EditorRight<CR>
 
 nnoremap <C-S-j> :action MoveStatementDown<CR>
 nnoremap <C-S-k> :action MoveStatementUp<CR>
@@ -86,12 +110,15 @@ nnoremap zL 50zl
 nnoremap gf :action Forward<CR>
 nnoremap gb :action Back<CR>
 nnoremap gj :action JumpToLastChange<CR>
-nnoremap ge :action GotoNextError<CR>
-nnoremap gE :action GotoPreviousError<CR>
+"nnoremap ge :action GotoNextError<CR>
+"nnoremap gE :action GotoPreviousError<CR>
 nnoremap gD :action GotoTypeDeclaration<CR>
 nnoremap gd :action GotoDeclaration<CR>
 nnoremap gl :action JumpToLastChange<CR>
 nnoremap gh :action ShowErrorDescription<CR>
+nnoremap gU :action FindUsages<CR>
+nnoremap gu :action ShowUsages<CR>
+
 
 "nnoremap gc :action GotoClass<CR>
 nnoremap gi :action GotoImplementation<CR>
@@ -100,18 +127,16 @@ nnoremap gp :action GotToSuperMethod<CR>
 nnoremap gt :action GotoTest<CR>
 
 """ Command
-nnoremap <c-r> :action RecentFiles<CR>
-nnoremap <c-/> :action FindInPath<CR>
-nnoremap <c-a> :action GotoAction<CR>
-nnoremap <c-f> :action GotoFile<CR>
-nnoremap <c-s> :action FileStructurePopup<CR>
-nnoremap <c-o> :action GotoSymbol<CR>
-nnoremap <c-c> :action GotoClass<CR>
-nnoremap <c-l> :action RecentLocations<CR>
+map <c-r> :action RecentFiles<CR>
+map <c-/> :action FindInPath<CR>
+map <c-a> :action GotoAction<CR>
+map <c-f> :action GotoFile<CR>
+map <c-s> :action FileStructurePopup<CR>
+map <c-o> :action GotoSymbol<CR>
+map <c-c> :action GotoClass<CR>
+map <c-l> :action RecentLocations<CR>
  
 """ Actions
-nnoremap <leader>U :action FindUsages<CR>
-nnoremap <leader>u :action ShowUsages<CR>
 nnoremap <leader>h :action CallHierarchy<CR>
 nnoremap <Leader>= :action ReformatCode<CR>
 nnoremap <leader>o :action OptimizeImports<CR>
@@ -130,16 +155,16 @@ nnoremap <leader>s :write<CR>
 nnoremap <c-p> :action JumpToLastWindow<CR>
 nnoremap <c-x> :action HideAllWindows<CR>
 
-nnoremap <leader><leader>r :action Run<CR>
-nnoremap <leader><leader>s :action Stop<CR>
-nnoremap <leader><leader>d :action Debug<CR>
-nnoremap <leader><leader>b :action BuildCurrentProject<CR>
+"nnoremap <leader><leader>r :action Run<CR>
+"nnoremap <leader><leader>s :action Stop<CR>
+"nnoremap <leader><leader>d :action Debug<CR>
+"nnoremap <leader><leader>b :action BuildCurrentProject<CR>
 
 """ Running and Debugging
-nnoremap ,r :action Run<CR>
-nnoremap ,s :action Stop<CR>
-nnoremap ,d :action Debug<CR>
-nnoremap ,b :action BuildCurrentProject<CR>
+"nnoremap ,r :action Run<CR>
+"nnoremap ,s :action Stop<CR>
+"nnoremap ,d :action Debug<CR>
+"nnoremap ,b :action BuildCurrentProject<CR>
 "nnoremap ,c :action RunClass<CR>
 "nnoremap ,f :action ChooseRunConfiguration<CR>
 "nnoremap ,t :action ActivateRunToolWindow<CR>
@@ -148,14 +173,19 @@ nnoremap ,b :action BuildCurrentProject<CR>
 "nnoremap ,b :action ToggleLineBreakpoint<CR>
 "nnoremap ,n :action ActivateDebugToolWindow<CR>
 
+" Multiple Cursors
+"map mx <A-x>
+"map mp <A-p>
+"map mc <A-n>
+
 " Plugins
 packadd matchit		                       
 
-"Plug 'easymotion/vim-easymotion'	        # Trigger <space><space>-w, requires IdeaVim-EasyMotion. Lots of mappings
-"map <leader>F <Plug>(easymotion-s)
-"map <leader>f <Plug>(easymotion-f)
+Plug 'easymotion/vim-easymotion'	        # Trigger <space><space>-w, requires IdeaVim-EasyMotion. Lots of mappings
+nmap F <Plug>(easymotion-s)
+nmap f <Plug>(easymotion-f)
 
-Plug 'dbakker/vim-paragraph-motion'       # Normally the { and } motions only match completely empty lines.
+Plug 'dbakker/vim-paragraph-motion'         # Normally the { and } motions only match completely empty lines.
 Plug ‘michaeljsmith/vim-indent-object’      # Text indent object
 
 Plug 'kana/vim-textobj-entire'		        # Entire buffer text object: ae
