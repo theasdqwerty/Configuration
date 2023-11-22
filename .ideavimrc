@@ -32,36 +32,37 @@ set nrformats-=octal
 
 "map b :NERDTreeMapActivateNode<CR>
 set NERDTree
-nnoremap <silent> <C-n> :NERDTreeToggle<CR>
+"nnoremap <silent> <C-n> :NERDTreeToggle<CR>
 "nnoremap <silent> <-n> <Action>(ActivateProjectToolWindow)<CR>
 "let g:NERDTreeMapActivateNode = <Action>(Left)<CR>
 "let g:NTPNames = add(g:NTPNames, 'csproj')
-"extend(g:NTPNames, ['*.sln', '*.csproj'])
+"extend(g:NTPNames, ['*.sln', '*.csproj']фывфывфыв)
 "set sneak
 set keep-english-in-normal
 "set ideajoin
 set ideamarks
 
 "nnoremap \e :e ~/.ideavimrc<CR>
-"nnoremap \r :action IdeaVim.ReloadVimRc.reload<CR>
+nnoremap \r :action IdeaVim.ReloadVimRc.reload<CR>
 
 """ Distraction Free Mode
 nnoremap <c-z> :action ToggleDistractionFreeMode<CR>
 
-""" Terminal
+" Terminal
 nnoremap <c-t> :action ActivateTerminalToolWindow<CR>
-nnoremap <leader>t :action Terminal.OpenInTerminal<CR>
+"nnoremap <leader>t :action Terminal.OpenInTerminal<CR>
+nnoremap <leader>t :action ActivateTerminalToolWindow<CR>
 
-""" Navigation
+" Navigation
 nnoremap <TAB> :action NextTab<CR>
-nnoremap <s-TAB> :action PreviousTab<CR>
+nnoremap <S-TAB> :action PreviousTab<CR>
 nnoremap tu :action Unsplit<CR>
 nnoremap tU :action UnsplitAll<CR>
 nnoremap tc :action CloseEditor<CR>
 nnoremap tC :action CloseAllEditors<CR>
 nnoremap to :tabonly<CR>
-nnoremap tn :action NextTab<CR> 
-nnoremap tp :action PreviousTab<CR>
+"nnoremap tn :action NextTab<CR> 
+"nnoremap tp :action PreviousTab<CR>
 nnoremap tm :action MoveEditorToOppositeTabGroup<CR>
 nnoremap tv :action SplitVertically<CR>
 nnoremap ts :action SplitHorizontally<CR>
@@ -137,6 +138,10 @@ map <c-c> :action GotoClass<CR>
 map <c-l> :action RecentLocations<CR>
  
 """ Actions
+nmap <leader>p :action ActivateProjectToolWindow<CR>
+"nmap <leader>g :action 
+
+
 nnoremap <leader>h :action CallHierarchy<CR>
 nnoremap <Leader>= :action ReformatCode<CR>
 nnoremap <leader>o :action OptimizeImports<CR>
