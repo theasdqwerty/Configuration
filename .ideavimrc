@@ -7,15 +7,17 @@ set clipboard+=ideaput
 
 set history=1000
 set showcmd
+
+""" Whichkey setup
 set which-key
-let g:WhichKey_FontSize = 18
-let g:WhichKey_CommandColor = "#41ead4"
-let g:WhichKey_PrefixColor = "#f335b2"
-let g:WhichKey_SortOrder = "by_key_prefix_first"
-let g:WhichKeyDesc_leader = "<leader> Leader key"
-let g:WhichKey_DefaultDelay = 200
-"set notimeout
-"set timeoutlen=5000
+set notimeout
+set timeoutlen=5000
+let g:WhichKey_FontSize = 19
+"let g:WhichKey_CommandColor = "#41ead4"
+"let g:WhichKey_PrefixColor = "#f335b2"
+"let g:WhichKey_SortOrder = "by_key_prefix_first"
+"let g:WhichKeyDesc_leader = "<leader> Leader key"
+"let g:WhichKey_DefaultDelay = 100
 
 set scrolloff=5
 set sidescrolloff=5
@@ -24,13 +26,10 @@ set number relativenumber
 set incsearch
 set ignorecase
 set hlsearch
-"nnoremap <silent> <esc> :noh<cr>
-"nmap <esc> :noh<cr>
 
 set smartcase
 set nrformats-=octal
 
-"map b :NERDTreeMapActivateNode<CR>
 set NERDTree
 "nnoremap <silent> <C-n> :NERDTreeToggle<CR>
 "nnoremap <silent> <-n> <Action>(ActivateProjectToolWindow)<CR>
@@ -47,11 +46,6 @@ nnoremap \r :action IdeaVim.ReloadVimRc.reload<CR>
 
 """ Distraction Free Mode
 nnoremap <c-z> :action ToggleDistractionFreeMode<CR>
-
-" Terminal
-nnoremap <c-t> :action ActivateTerminalToolWindow<CR>
-"nnoremap <leader>t :action Terminal.OpenInTerminal<CR>
-nnoremap <leader>t :action ActivateTerminalToolWindow<CR>
 
 " Navigation
 nnoremap <TAB> :action NextTab<CR>
@@ -71,16 +65,24 @@ nnoremap tl <c-w>l
 nnoremap tj <c-w>j
 nnoremap tk <c-w>k
 
-"map <leader>1 <Action>(ActivateProjectToolWindow)<CR>
-"nmap <leader>0 :action ActivateCommitToolWindow<cr>
-"nmap <leader>1 :action SelectInProjectView<cr>
-"nmap <leader>2 :action ActivateBookmarksToolWindow<cr>
-"nmap <leader>3 :action ActivateFindToolWindow<cr>
-"nmap <leader>4 :action ActivateRunToolWindow<cr>
-"nmap <leader>5 :action ActivateDebugToolWindow<cr>
-"nmap <leader>7 :action ActivateAndroidProfilerToolWindow<cr>
-"nmap <leader>8 :action ActivateTerminalToolWindow<cr>
-"nmap <leader>9 :action ActivateVersionControlToolWindow<cr>
+""" Tool windows
+nnoremap <leader>1 :action ActivateProjectToolWindow<CR>
+nnoremap <leader>2 :action ActivateBookmarksToolWindow<CR>
+nnoremap <leader>3 :action ActivateFindToolWindow<CR>
+nnoremap <leader>4 :action ActivateRunToolWindow<CR>
+nnoremap <leader>5 :action ActivateDebugToolWindow<CR>
+nnoremap <leader>6 :action ActivateProblemsViewToolWindow<CR>
+nnoremap <leader>7 :action ActivateNuGetToolWindow<CR>
+nnoremap <leader>8 :action ActivateUnitTestsToolWindow<CR>
+nnoremap <leader>9 :action ActivateVersionControlToolWindow<CR>
+nnoremap <leader>0 :action ActivateCommitToolWindow<CR>
+
+
+""" GPT Bito setup
+vnoremap <S-A-T> :action Bito.GenerateUnitTest<CR>
+vnoremap <S-A-C> :action Bito.GenerateComment<CR>
+vnoremap <S-A-P> :action Bito.PerformanceCheck<CR>
+vnoremap <S-A-R> :action Bito.RecommendationAction<CR>
 
 """ Editing source code
 set ideajoin
@@ -137,11 +139,21 @@ map <c-o> :action GotoSymbol<CR>
 map <c-c> :action GotoClass<CR>
 map <c-l> :action RecentLocations<CR>
  
-""" Actions
-nmap <leader>p :action ActivateProjectToolWindow<CR>
+""" Tool windows
+nnoremap <c-n> :action ActivateProjectToolWindow<CR>
+nnoremap <c-p> :action JumpToLastWindow<CR>
+nnoremap <c-x> :action HideAllWindows<CR>
+
+nmap <leader>1 :action ActivateProjectToolWindow<CR>
+
+" Terminal
+"nnoremap <c-t> :action ActivateTerminalToolWindow<CR>
+"nnoremap <leader>t :action Terminal.OpenInTerminal<CR>
+nnoremap <leader>t :action ActivateTerminalToolWindow<CR>
+"nmap <leader>s :action ActivateStructureToolWindow<CR>
 "nmap <leader>g :action 
 
-
+""" Actions
 nnoremap <leader>h :action CallHierarchy<CR>
 nnoremap <Leader>= :action ReformatCode<CR>
 nnoremap <leader>o :action OptimizeImports<CR>
@@ -153,12 +165,9 @@ nnoremap <leader>E :action GotoPreviousError<CR>
 nnoremap <leader>n :action ReSharperNavigateTo<CR>
 nnoremap <leader>x :action HideAllWindows<CR>
 nnoremap <leader>d :action QuickJavaDoc<CR>
-nnoremap <leader>l :noh<CR>
-nnoremap <leader>s :write<CR>
+"nnoremap <leader>l :noh<CR>
+"nnoremap <leader>s :write<CR>
 
-""" Tool windows
-nnoremap <c-p> :action JumpToLastWindow<CR>
-nnoremap <c-x> :action HideAllWindows<CR>
 
 "nnoremap <leader><leader>r :action Run<CR>
 "nnoremap <leader><leader>s :action Stop<CR>
