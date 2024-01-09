@@ -19,6 +19,16 @@ let g:WhichKey_FontSize = 19
 "let g:WhichKeyDesc_leader = "<leader> Leader key"
 "let g:WhichKey_DefaultDelay = 100
 
+""" Blackhole buffer
+nnoremap d "_d
+vnoremap d "_d
+nnoremap D "_D
+vnoremap D "_D
+nnoremap c "_c
+vnoremap c "_c
+nnoremap C "_C
+vnoremap C "_C
+
 set scrolloff=5
 set sidescrolloff=5
 set number relativenumber
@@ -31,11 +41,11 @@ set smartcase
 set nrformats-=octal
 
 set NERDTree
-"nnoremap <silent> <C-n> :NERDTreeToggle<CR>
-"nnoremap <silent> <-n> <Action>(ActivateProjectToolWindow)<CR>
-"let g:NERDTreeMapActivateNode = <Action>(Left)<CR>
-"let g:NTPNames = add(g:NTPNames, 'csproj')
-"extend(g:NTPNames, ['*.sln', '*.csproj']фывфывфыв)
+set quickscope
+let g:qs_primary_color = '#FA00FA'
+let g:qs_secondary_color = 'FA7DFA'
+"let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
+"let g:qs_highlight_on_keys = ['f', 'F']
 "set sneak
 set keep-english-in-normal
 "set ideajoin
@@ -147,13 +157,11 @@ nnoremap <c-x> :action HideAllWindows<CR>
 nmap <leader>1 :action ActivateProjectToolWindow<CR>
 
 " Terminal
-"nnoremap <c-t> :action ActivateTerminalToolWindow<CR>
 "nnoremap <leader>t :action Terminal.OpenInTerminal<CR>
 nnoremap <leader>t :action ActivateTerminalToolWindow<CR>
-"nmap <leader>s :action ActivateStructureToolWindow<CR>
-"nmap <leader>g :action 
 
 """ Actions
+"nnoremap <leader>i :action Generate<CR>
 nnoremap <leader>h :action CallHierarchy<CR>
 nnoremap <Leader>= :action ReformatCode<CR>
 nnoremap <leader>o :action OptimizeImports<CR>
@@ -165,8 +173,8 @@ nnoremap <leader>E :action GotoPreviousError<CR>
 nnoremap <leader>n :action ReSharperNavigateTo<CR>
 nnoremap <leader>x :action HideAllWindows<CR>
 nnoremap <leader>d :action QuickJavaDoc<CR>
-"nnoremap <leader>l :noh<CR>
-"nnoremap <leader>s :write<CR>
+nnoremap <leader>l :noh<CR>
+nnoremap <leader>s :write<CR>
 
 
 "nnoremap <leader><leader>r :action Run<CR>
@@ -195,9 +203,9 @@ nnoremap <leader>d :action QuickJavaDoc<CR>
 " Plugins
 packadd matchit		                       
 
-Plug 'easymotion/vim-easymotion'	        # Trigger <space><space>-w, requires IdeaVim-EasyMotion. Lots of mappings
-nmap F <Plug>(easymotion-s)
-nmap f <Plug>(easymotion-f)
+"Plug 'easymotion/vim-easymotion'	        # Trigger <space><space>-w, requires IdeaVim-EasyMotion. Lots of mappings
+"nmap F <Plug>(easymotion-s)
+"nmap f <Plug>(easymotion-f)
 
 Plug 'dbakker/vim-paragraph-motion'         # Normally the { and } motions only match completely empty lines.
 Plug ‘michaeljsmith/vim-indent-object’      # Text indent object
